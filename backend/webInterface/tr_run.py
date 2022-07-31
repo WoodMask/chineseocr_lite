@@ -112,7 +112,7 @@ class TrRun(tornado.web.RequestHandler):
         else:
             request_time[remote_ip_now] += 1
 
-        if compress_size is not None:
+        if compress_size is not None and compress_size != "0":
             try:
                 compress_size = int(compress_size)
             except ValueError as ex:
@@ -123,7 +123,7 @@ class TrRun(tornado.web.RequestHandler):
                 # return
 
             short_size = compress_size
-            if short_size < 64:
+            if  short_size < 64:
                 res.append("短边尺寸过小，请调整短边尺寸")
                 do_det = False
 
